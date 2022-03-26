@@ -1,13 +1,15 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
-</template>
 
+<script setup>
+import BaseUI from "@/views/BaseUI.vue"
+</script>
+<template>
+<h1>Hello 1</h1>
+<router-view>
+    <BaseUI />
+</router-view>
+</template>
 <style>
-#app {
+ #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,5 +28,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} 
 </style>
