@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import BaseUI from "../views/BaseUI.vue";
+import StuntUI from "../views/StuntUI.vue";
 
 const routes = [
   {
     path: "/",
-    name: "base-ui",
-    component: BaseUI,
+    name: "stunt-ui",
+    component: StuntUI,
   },
 ];
 

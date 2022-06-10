@@ -1,15 +1,37 @@
+<template>
+  <router-view>
+    <StuntUI v-show="showDrivingUI" />
+  </router-view>
+</template>
 
 <script setup>
-import BaseUI from "@/views/BaseUI.vue"
+import { onMounted, onUnmounted, ref } from "vue";
+import StuntUI from "@/views/StuntUI.vue";
+const showDrivingUI = ref(false);
+const vehicleListener = ref(null);
+const newCar = ref(false);
+const car = ref("");
+onMounted(() => {
+  vehicleListener.value = window.addEventListener("message", (event) => {
+    const item = event.data;
+    if (item.type == "enabledrivingUI") {
+      showDrivingUI.value = item.enable;
+      if (item.car != car.value) {
+        newCar.value = true;
+        car.value = item.car;
+      } else {
+        newCar.value = false;
+      }
+    }
+  });
+});
+onUnmounted(() => {
+  window.removeEventListener("message", vehicleListener);
+});
 </script>
-<template>
-<h1>Hello 1</h1>
-<router-view>
-    <BaseUI />
-</router-view>
-</template>
+
 <style>
- #app {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -28,5 +50,5 @@ import BaseUI from "@/views/BaseUI.vue"
 
 #nav a.router-link-exact-active {
   color: #42b983;
-} 
+}
 </style>
