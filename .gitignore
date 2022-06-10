@@ -20,4 +20,7 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
+*.webm
+*.mp4
+*.png
 *.sw?
