@@ -1,5 +1,6 @@
 <template>
   <div class="stunts">
+    <h1>lets goo!</h1>
     <DriftFlame />
   </div>
 </template>
